@@ -33,9 +33,7 @@ namespace MemoApp.Services
 
         public async Task<string> AuthenticateUserAsync(UserDto user)
         {
-            Validate(user);
-
-            var userEntity = await _userRepository.GetByUsername(user.Username);
+            var userEntity = await _userRepository.GetByUsernameAsync(user.Username);
 
             if (userEntity == null) throw new AuthenticationException($"Invalid user credentials");
 
@@ -49,8 +47,6 @@ namespace MemoApp.Services
 
         public async Task RegisterUserAsync(UserDto user)
         {
-            Validate(user);
-
             var password = GetPasswordHash(user.Password);
 
             var userEntity = new UserLogin()
@@ -61,7 +57,7 @@ namespace MemoApp.Services
                 UserTypeId = (int)Contracts.UserType.User
             };
 
-            await _userRepository.Create(userEntity);
+            await _userRepository.CreateAsync(userEntity);
         }
 
         private string GetPasswordHash(string password)
@@ -71,19 +67,6 @@ namespace MemoApp.Services
             var bytes = Encoding.ASCII.GetBytes(password);
             var loginPasswordHash = sha1.ComputeHash(bytes);
             return Convert.ToBase64String(loginPasswordHash);
-        }
-
-        private void Validate(UserDto user)
-        {
-            if (string.IsNullOrEmpty(user.Password))
-            {
-                throw new AuthenticationException("User must have a valid password.");
-            }
-
-            if (string.IsNullOrEmpty(user.Username))
-            {
-                throw new AuthenticationException("User must have a valid username.");
-            }
         }
 
         private string GenerateJSONWebToken(UserLogin userInfo)

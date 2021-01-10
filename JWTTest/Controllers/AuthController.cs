@@ -9,11 +9,11 @@ namespace MemoApp.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class LoginController : ControllerBase
+    public class AuthController : ControllerBase
     {
         private readonly IAuthenticationService _authenticationService;
 
-        public LoginController(IAuthenticationService authenticationService)
+        public AuthController(IAuthenticationService authenticationService)
         {
             _authenticationService = authenticationService;
         }

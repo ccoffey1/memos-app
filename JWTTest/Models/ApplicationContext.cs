@@ -40,11 +40,11 @@ namespace MemoApp.Models
                     .HasMaxLength(255)
                     .HasColumnName("title");
 
-                entity.Property(e => e.Userloginid).HasColumnName("userloginid");
+                entity.Property(e => e.UserLoginId).HasColumnName("userloginid");
 
                 entity.HasOne(d => d.UserLogin)
                     .WithMany(p => p.Memos)
-                    .HasForeignKey(d => d.Userloginid)
+                    .HasForeignKey(d => d.UserLoginId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("fk_userid");
             });

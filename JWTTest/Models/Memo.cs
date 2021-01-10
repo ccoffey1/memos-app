@@ -9,8 +9,8 @@ namespace MemoApp.Models
     {
         public int Id { get; set; }
         public string Title { get; set; }
-        public byte[] Content { get; set; }
-        public int Userloginid { get; set; }
+        public string Content { get; set; }
+        public int UserLoginId { get; set; }
 
         public virtual UserLogin UserLogin { get; set; }
     }

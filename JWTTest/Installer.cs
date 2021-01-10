@@ -8,8 +8,13 @@ namespace MemoApp
     {
         public static void AddServicesAndRepositories(this IServiceCollection services)
         {
+            // services
             services.AddTransient<IAuthenticationService, AuthenticationService>();
+            services.AddTransient<IMemoService, MemoService>();
+
+            // repositories
             services.AddTransient<IUserRepository, UserRepository>();
+            services.AddTransient<IMemoRepository, MemoRepository>();
         }
     }
 }

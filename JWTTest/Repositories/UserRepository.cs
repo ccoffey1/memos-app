@@ -7,9 +7,9 @@ namespace MemoApp.Repositories
 {
     public interface IUserRepository
     {
-        Task<UserLogin> Create(UserLogin user);
-        Task<UserLogin> Get(int id);
-        Task<UserLogin> GetByUsername(string username);
+        Task<UserLogin> CreateAsync(UserLogin user);
+        Task<UserLogin> GetAsync(int id);
+        Task<UserLogin> GetByUsernameAsync(string username);
     }
 
     public class UserRepository : IUserRepository
@@ -21,21 +21,21 @@ namespace MemoApp.Repositories
             _context = context;
         }
 
-        public async Task<UserLogin> Create(UserLogin user)
+        public async Task<UserLogin> CreateAsync(UserLogin user)
         {
             var result = _context.UserLogins.Add(user);
             await _context.SaveChangesAsync();
             return result.Entity;
         }
 
-        public async Task<UserLogin> Get(int id)
+        public async Task<UserLogin> GetAsync(int id)
         {
             return await _context.UserLogins
                 .Include(x => x.UserType)
                 .FirstOrDefaultAsync(x => x.Id == id);
         }
 
-        public async Task<UserLogin> GetByUsername(string username)
+        public async Task<UserLogin> GetByUsernameAsync(string username)
         {
             return await _context.UserLogins
                 .Include(x => x.UserType)
