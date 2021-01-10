@@ -2,7 +2,7 @@
 
 #nullable disable
 
-namespace JWTTest.Models
+namespace MemoApp.Models
 {
     public partial class ApplicationContext : DbContext
     {
@@ -15,12 +15,39 @@ namespace JWTTest.Models
         {
         }
 
+        public virtual DbSet<Memo> Memos { get; set; }
         public virtual DbSet<UserLogin> UserLogins { get; set; }
         public virtual DbSet<UserType> UserTypes { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.HasAnnotation("Relational:Collation", "English_United States.1252");
+
+            modelBuilder.Entity<Memo>(entity =>
+            {
+                entity.ToTable("memo");
+
+                entity.Property(e => e.Id)
+                    .HasColumnName("id")
+                    .UseIdentityAlwaysColumn();
+
+                entity.Property(e => e.Content)
+                    .IsRequired()
+                    .HasColumnName("content");
+
+                entity.Property(e => e.Title)
+                    .IsRequired()
+                    .HasMaxLength(255)
+                    .HasColumnName("title");
+
+                entity.Property(e => e.Userloginid).HasColumnName("userloginid");
+
+                entity.HasOne(d => d.UserLogin)
+                    .WithMany(p => p.Memos)
+                    .HasForeignKey(d => d.Userloginid)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("fk_userid");
+            });
 
             modelBuilder.Entity<UserLogin>(entity =>
             {
@@ -43,7 +70,7 @@ namespace JWTTest.Models
                 entity.Property(e => e.UserTypeId).HasColumnName("usertypeid");
 
                 entity.HasOne(d => d.UserType)
-                    .WithMany(p => p.Userlogins)
+                    .WithMany(p => p.UserLogins)
                     .HasForeignKey(d => d.UserTypeId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("fk_usertype");

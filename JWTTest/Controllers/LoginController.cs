@@ -1,11 +1,11 @@
-﻿using JWTTest.Contracts;
-using JWTTest.Services;
+﻿using MemoApp.Contracts;
+using MemoApp.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Threading.Tasks;
 
-namespace JWTTest.Controllers
+namespace MemoApp.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]

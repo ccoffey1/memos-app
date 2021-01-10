@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using System.Security.Claims;
 
-namespace JWTTest.Controllers
+namespace MemoApp.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]

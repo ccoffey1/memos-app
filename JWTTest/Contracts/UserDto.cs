@@ -1,4 +1,4 @@
-﻿namespace JWTTest.Contracts
+﻿namespace MemoApp.Contracts
 {
     public class UserDto
     {

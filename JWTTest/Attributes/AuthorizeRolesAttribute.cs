@@ -1,7 +1,7 @@
-﻿using JWTTest.Contracts;
+﻿using MemoApp.Contracts;
 using Microsoft.AspNetCore.Authorization;
 
-namespace JWTTest.Attributes
+namespace MemoApp.Attributes
 {
     public class AuthorizeRolesAttribute : AuthorizeAttribute
     {

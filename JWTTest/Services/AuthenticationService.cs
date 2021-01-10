@@ -1,6 +1,6 @@
-﻿using JWTTest.Contracts;
-using JWTTest.Models;
-using JWTTest.Repositories;
+﻿using MemoApp.Contracts;
+using MemoApp.Models;
+using MemoApp.Repositories;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 using System;
@@ -12,7 +12,7 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace JWTTest.Services
+namespace MemoApp.Services
 {
     public interface IAuthenticationService
     {

@@ -1,9 +1,9 @@
-﻿using JWTTest.Models;
+﻿using MemoApp.Models;
 using Microsoft.EntityFrameworkCore;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace JWTTest.Repositories
+namespace MemoApp.Repositories
 {
     public interface IUserRepository
     {

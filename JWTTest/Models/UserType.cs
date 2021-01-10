@@ -3,18 +3,18 @@ using System.Collections.Generic;
 
 #nullable disable
 
-namespace JWTTest.Models
+namespace MemoApp.Models
 {
     public partial class UserType
     {
         public UserType()
         {
-            Userlogins = new HashSet<UserLogin>();
+            UserLogins = new HashSet<UserLogin>();
         }
 
         public int Id { get; set; }
         public string Code { get; set; }
 
-        public virtual ICollection<UserLogin> Userlogins { get; set; }
+        public virtual ICollection<UserLogin> UserLogins { get; set; }
     }
 }

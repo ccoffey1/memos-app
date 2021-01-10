@@ -1,8 +1,8 @@
-﻿using JWTTest.Repositories;
-using JWTTest.Services;
+﻿using MemoApp.Repositories;
+using MemoApp.Services;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace JWTTest
+namespace MemoApp
 {
     public static class Installer
     {
